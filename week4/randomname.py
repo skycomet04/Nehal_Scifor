@@ -1,0 +1,23 @@
+from tkinter import *
+import random as ran
+root=Tk()
+root.geometry("1800x1500")
+name=StringVar()
+removed=StringVar()
+stud=list(input("Enter students name ").split(" "))
+def shuffle_name():
+    choice=ran.choice(stud)
+    name.set(choice)
+    stud.remove(choice)
+    t1.insert(END,choice+"\n")
+l1=Label(root,text="Random Name Selector",bg="mint cream",font=("impact",30)).place(x=0,y=5,height=90,width=1500)
+lf1=LabelFrame(root,bg="mint cream").place(x=0,y=100,height=1500,width=738)
+lf2=LabelFrame(root,bg="mint cream").place(x=738,y=100,height=1500,width=800)
+l2=Label(lf1,text="Selected name",bg="mint cream",font=("sans-serif",24)).place(x=350,y=300)
+l2=Label(lf2,text="Already Selected",bg="mint cream",font=("sans-serif",24)).place(x=850,y=300)
+e1=Entry(lf1,textvariable=name,font=("sans-serif",24))
+e1.place(x=270,y=400,height=50,width=450)
+t1=Text(lf2)
+t1.place(x=800,y=400,height=150,width=500)
+b1=Button(lf1,text="Shuffle",command=shuffle_name,bg="white").place(x=380,y=500,width=200,height=50)
+root.mainloop()
