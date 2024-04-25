@@ -1,0 +1,84 @@
+{% extends "main.html" %}
+{% block body %} 
+<div class="containers" style="margin-top:0%;">
+    {% if  type == 'parking' %}
+    <div class="contain">
+        <h2 style="margin-top:3%;">Parking Detail Page</h2>
+        <div class="colflex">
+            <span class="span-left">Parking Id:</span><span class="rspan">{{parking.id}}</span>
+        </div>
+        <div class="colflex">
+            <span class="span-left">Parking slot no:</span><span class="rspan">{{parking.slot_no}}</span>
+            <span class="span-right">Parking Date:</span><span class="rspan">{{parking.parking_date}}</span>
+        </div>
+        <div class="colflex">   
+            <span class="span-left">Vehicle License No: </span><span class="rspan">{{parking.veh_registration}}</span>
+            <span class="span-right">Vehicle Type: </span><span class="rspan">{{parking.vehicle_type}}</span>
+        </div>
+        <div class="colflex">
+            <span class="span-left">Owner Name:</span><span class="rspan">{{parking.owner_name}}</span>
+            <span class="span-right">Owner Contact No: </span><span class="rspan">{{parking.owner_contactno}}</span>
+        </div>
+        <div class="colflex">
+            <span class="span-left">Parking Rate :</span><span class="rspan">{{parking.parking_rate}}</span>
+            <span class="span-right">Total Amount: </span><span class="rspan">{{parking.fee}}</span>
+        </div>
+        <div class="colflex">
+            <span class="span-left">Intime: </span><span class="rspan">{{parking.intime}}</span>
+            <span class="span-right">Outtime: </span><span class="rspan">{{parking.outtime}}</span>
+        </div>
+        <div class="colflex">
+            <span class="span-left">Booking User :</span><span class="rspan">{{parking.booking_user}}</span>
+        </div>
+        {% if user.is_staff %}<a  href="{% url 'generatepdf' parking.id %}" class="btn btn-primary adetail">Generate Booking Ticket</a>{% endif %}
+    </div>
+    {% elif type == 'vehicle'  %}
+    <div class="contain">
+        <h2 style="margin-top:3%;">Vehicle Detail Page</h2>
+        <div class="colflex"> 
+            <span class="span-left">Vehicle Id:</span><span class="rspan">{{vehicle.id}}</span>
+            <span class="span-right">Registration Number:</span><span class="rspan">{{vehicle.veh_registration_no}}</span>
+        </div>
+        <div class="colflex"> 
+            <span class="span-left">Vehicle Type:</span><span class="rspan">{{vehicle.vehicle_category}}</span>
+            <span class="span-right">Vehicle Model:</span><span class="rspan">{{vehicle.veh_model}}</span>
+        </div>
+        <div class="colflex"> 
+            <span class="span-left">Owner Name :</span><span class="rspan">{{vehicle.owner}}</span>
+            <span class="span-right">Owner Mobile No :</span><span class="rspan">{{vehicle.contact}}</span>
+        </div>
+        <div class="colflex"> 
+            <span class="span-left">Remark:</span><span class="rspan">{{vehicle.remark}}</span>
+        </div>
+        <div class="colflex"> 
+            <span class="span-left">Created By:</span><span class="rspan">{{vehicle.created_by}}</span>
+        </div>
+        <div class="colflex"> 
+            <span class="span-left">Is Parked:</span><span class="rspan">{{vehicle.parked}}</span>
+        </div>
+            <a href="{% url 'updatevehicle' vehicle.id%}" class="btn btn-primary adetail">Edit Vehicle</a>
+    </div>
+    {% elif type == 'space'  %}
+    <div class="contain">
+        <h2 >Parking Space Detail Page</h2>
+        <div class="colflex"> 
+            <span class="span-left">Slot No:</span><span class="rspan">{{space.no}}</span>
+        </div>
+        <div class="colflex"> 
+            <span class="span-left">Is Available:</span><span class="rspan">{{space.is_available}}</span>
+            <span class="span-right">Vehicle Registration No:</span><span class="rspan">{{booking.veh_registration}}</span>       
+        </div>
+        {% if not space.is_available %}
+        <div class="colflex"> 
+            <span class="span-left">Vehicle Intime:</span><span class="rspan">{{booking.intime}}</span>
+            <span class="span-right">Vehicle Outtime:</span><span class="rspan">{{booking.outtime}}</span>
+        </div>
+        {% endif %}
+        <div class="colflex">
+            <span class="span-left">Vehicle Type:</span><span class="rspan">{{space.veh_type}}</span>
+        </div>
+        {% if space.is_available %}<a href="{% url 'updatespace' space.no %}" class="btn btn-primary adetail">Edit space</a>{% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock body %}

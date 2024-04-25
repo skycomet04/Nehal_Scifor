@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+{%block body%}
+<div class="msg">
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-info">
+        <strong>{{message}}</strong>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+<div class="image">
+    <div class="popup">  
+      <h3>Log In</h3>
+    <form method="post" action="">
+      {% csrf_token %}
+      <div class="form-element">
+        <label for="user">Username</label>
+        <input class="form-input" type="text"  id="user" name="user" >
+      </div>
+      <div class="form-element">
+          <label for="password">Password</label>
+          <input class="form-input" type="password"  id="password" name="password">
+      </div>
+      <div class="form-element">
+      <button type="submit" class="btn btn-primary">Sign In</button>
+      </div>
+        <a href="{% url 'forgetpass' %}">Forget password</a><br>
+       <h6> Don't have an account? <a style="font-weight:400;"href="{% url 'register' %}">Create Account</a></h6>
+    </form>
+    </div>
+</div>
+
+{%endblock body%}

@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block body %} 
+<div class="containers">
+<div class="detail">
+    <center><h3>User Details </h3></center>
+    <div class="user-detail">
+        <span><h5>User Id:&nbsp;{{user.id}}</h5></span>
+    </div>
+    <div class="user-detail">
+        <span><h5 >{%if user.first_name != None %}User FullName:&nbsp;{{user.first_name}}&nbsp;{{user.last_name}}{% else %} User FullName:&nbsp;-{% endif %}</h5></span>
+    </div>
+    <div class="user-detail">
+        <span><h5 >username:&nbsp;{{user.username}}</span>
+    </div>
+    <div class="user-detail">
+        <span><h5 >User Email: &nbsp;{{user.email}}</h5></span>
+    </div>
+</div>
+</div>
+{% endblock body %}

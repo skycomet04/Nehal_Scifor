@@ -1,0 +1,89 @@
+{% extends 'main.html' %}
+{%block body%}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info">
+    <strong>{{message}}</strong>
+</div> 
+{% endfor %}
+{% endif %}
+{% if update %}
+<div class="col-md-3" >
+    <div class="submit_form">
+        <h2>Book Parking</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="vehicle_uniqueid">Vehicle </label>
+            <input type="text" id="vehicle_uniqueid" name="vehicle_uniqueid" value="{{parking.vehicle_uniqueid.id}}">
+        </div>
+        <div class="mb-3">
+            <label for="slot_no">Slot No </label>
+            <input type="hidden" class="form-control" id="slot_no" name="slot_no" value="{{parking.slot_no}}">
+        </div>
+        <div class="mb-3">
+            <label for="outtime">Vehicle Out Time </label>
+            <input type="datetime-local" class="form-control" id="outtime" name="outtime" value="{% if parking.outtime %}{{ parking.outtime|date:"Y-m-d" }}T{{ parking.outtime|time:"H:i" }}{% endif %}">
+        </div>
+        <div class="form-group">
+            <label for="vehicle_type">Vehicle Type</label>
+            <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" value="{{parking.vehicle_type}}">
+        </div>
+        <center>
+            <button type="submit" class="btn bg-primary-subtle">Edit Parking Slot Booking</button>
+        </center>
+    </form>
+    </div>
+    </div>
+{% else %}
+<div class="col-md-3" >
+    <div class="submit_form">
+        <h2>Book Parking</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="vehicle_uniqueid">Vehicle </label>
+            <select class="form-control" id="vehicle_uniqueid" name="vehicle_uniqueid">
+                {% for no in reg_no %}
+                    <option value="{{no.id}}">{{no.id}}[{{no.veh_registration_no}}][{{no.vehicle_category}}]</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% if id %}
+            <div class="mb-3">
+                <label for="slot_no">Slot No </label>
+                <input type="slot_no" class="form-control" id="slot_no" name="slot_no" value="{{slot.no}}">
+            </div>
+        {% else %}
+        <div class="mb">
+            <label for="slot_no">Available Parking Slots </label>
+            <select name="slot_no" class="form-control" id="slot_no" name="slot_no">
+                {% if slots %}
+                    {% for slot in slots %}
+                        <option value="{{slot.no}}">{{slot.no}} [{{slot.veh_type}}]</option>
+                    {% endfor %}
+                {%else%}<option>parking slots are not free </option>
+                {% endif %}
+            </select>
+        </div>
+        {% endif %}
+        <div class="mb-3">
+            <label for="outtime">Vehicle Out Time </label>
+            <input type="datetime-local" class="form-control" id="outtime" name="outtime">
+        </div>
+        <div class="mb-3">
+            <label for="vehicle_type">Vehicle Type</label>
+            <select class="form-control" id="vehicle_type" name="vehicle_type">
+                <option value="4">Four-wheeler</option>
+                <option value="3">Three-wheeler</option>
+                <option value="2">Two-wheeler</option>
+            </select>
+            </div>
+        <center>
+            <button type="submit" class="btn bg-primary-subtle">Book Slot</button>
+        </center>
+    </form>
+    </div>
+</div>
+{% endif %}
+{% endblock body %}
