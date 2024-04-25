@@ -1,0 +1,20 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/youtu.css"> 
+    </head>
+    <body> 
+  
+    <h1>Youtube Video Downloader</h1> 
+    <form action="" method="post"> 
+    {% csrf_token %} 
+    <div class="you">
+    <label for="link">Enter URL of the video:</label> </div>
+    <div class="you">
+    <input type="text" id="link" name="link"><br><br> </div>
+    <div class="you">
+    <button type="submit">Submit</button></div>
+    </form> 
+    
+    </body> 
+</html>
