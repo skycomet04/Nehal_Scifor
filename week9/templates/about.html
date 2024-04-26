@@ -1,0 +1,185 @@
+{% extends "main.html" %}
+{% load static %}
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+    {%endblock %}
+        {% block title %} 
+            About Me
+        {% endblock title %}    
+{% block body %} 
+<div class="container mx-3 my-3">
+    <h1>About Me</h1>
+    <div class="about">
+        <div class="image">
+            <img src="/static/nehal.jpeg" width="300px" height="500px">
+        </div>
+        <div class="story">
+            <p>
+               Hii, I'm Nehal. I have done my graduation in B.com(H) and right now I'm pursuing MCA degree from Amity University online.
+               From my senior secondary days I was interested in coding and different programming languages and So after doing my graduation 
+               I decided to give a shot in it as a career. I'm passionate person and will give my best to perform any work or task.
+               I have strong knowledge of python, different python libraries like numpy, pandas, matplotlib, tkinter, C, MySql, Apex.I even know 
+               Html, CSS, bootstrap and beginner level javascript.
+            </p>
+            <p>
+                In addition to my technical skills, I possess good communication skills, teamwork skills and attention to detail, which is 
+                needed to perform a job . I have completed multiple projects in data structures . I'm excited to be part of a dynamic team 
+                that values collaboration and innovation along with the scope of developemnt of my own skills.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="programming" id="program-tab">
+    <h3>Programming Skills</h3>
+    <div class="program-tab">
+        <h5 class="tab active-link" data-tab="python" onclick="opentab(event, 'python')">Python</h5>
+        <h5 class="tab" data-tab="apex" onclick="opentab(event, 'apex')">Salesforce Developer</h5>
+        <h5 class="tab" data-tab="django" onclick="opentab(event, 'django')">Django Web Framework</h5>
+        <h5 class="tab" data-tab="mysql" onclick="opentab(event, 'mysql')">MySql</h5>
+    </div>
+    <div class="tab-contents active-tab" id="python">
+    <ul>
+        <li> Command on Core Python (Functions, different types of datatypes,lambda)</li> 
+        <li> OOPS Concept (class and objects, Inheritance,overriding,abstraction)</li>
+        <li> Exception Handling</li> 
+        <li> File Handling</li> 
+        <li> PDBC </li>
+        <li> Regex module</li> 
+        <li> Data Science (NumPy ,Pandas, Matplotlib)</li> 
+        <li> Tkinter in GUI</li> 
+    </ul>
+    </div>
+    <div class="tab-contents" id="apex">
+        <ul>
+            <li>Strong Knowledge of Apex Trigger - Trigger event, all context variables </li>
+            <li>Apex basics</li> 
+            <li>Database Manipulation Language - insert, upsert, delete, update, merge command</li>   
+            <li>Salesforce Object Query Language</li>
+            <li>Exception Handling and api integration</li>
+            <li>Apex Testing ( Unit test and Test Data )</li>
+            <li>Batch Apex And Governor Limits </li>
+        </ul>
+    </div>
+    <div class="tab-contents" id="django">
+        <ul>
+            <li>Django starting(creating project,models,views,defining path) </li>
+            <li>Admin(create user, CRUD functionality)</li> 
+            <li>Django working with static files(css, js, images)</li>   
+            <li>Working with Templates(HTML)</li>
+            <li>QuerySets</li>
+        </ul>
+    </div>
+    <div class="tab-contents" id="mysql">
+        <ul>
+            <li>creating Database , tables, fields, inserting data, view data</li>
+            <li>Join(inner join, left join, right join, etc ) </li> 
+            <li> Data operations(insert, update, delete)</li>
+        </ul>
+    </div>
+</div>
+<div class="skills" id="skill-tab">
+    <h3>Soft Skills</h3>
+    <div class="softskill">
+        <ul>
+            <li><span>Interpersonal Communication </span><br> </li>
+            <li><span>Positive Attitude </span></li>
+            <li><span>Creativity</span> <br></li>
+            <li><span>Analytical Skill </span><br></li>
+            <li><span>Willingness to learn new thing </span><br></li>
+        </ul>
+    </div>   
+</div>
+<div class="work-education" id="work-tab">
+    <div class="contain">
+        <h3>Work/Eduction</h3>
+        <div class="timeline" >
+            <div class="container-work left">
+                <div class="content">
+                <h3>Present</h3>
+                <p>Ongoing Internship in Scifor Technologies .There I have created lots
+                of project using python different modules,django,FastApi</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline">
+            <div class="container-work left">
+                <div class="content">
+                <h4>Present</h4>
+                <p>Pursuing MCA from Amity University </p>
+                </div>
+            </div>
+            <div class="container-work right">
+                <div class="content">
+                <h4>2022</h4>
+                <p><ul>
+                    <li>Python course from Matrix.Created few projects there</li>
+                    <li>Salesforce Administrator Training from S2 Labs.</li>
+                    <li>Cleared USCMA exam</li>
+                </ul>
+                </p>
+                </div>
+            </div>
+            <div class="container-work left">
+                <div class="content">
+                <h4>2021</h4>
+                <p>Graduated in B.com(h) from IIS University with overall 
+                    percentage of 87.31 and 9.11 CGPA </p>
+                </div>
+            </div>
+            <div class="container-work right">
+                <div class="content">
+                <h4>2018</h4>
+                <p>Senior Secondory School from Cambridge Court High School.
+                    scored 88.2 percentage 
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+    <script >
+        const opentab = (event,tabname) => {
+            let links=document.getElementsByClassName("tab")
+            let contents=document.getElementsByClassName("tab-contents")
+            for(let link of links){
+                link.classList.remove("active-link");
+            }
+            for(let content of contents){
+                content.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            let links = document.getElementsByClassName("tab");
+            for (let i = 0; i < links.length; i++) {
+                links[i].addEventListener("click", function (event) {
+                    opentab(event, this.getAttribute("data-tab"));
+                });
+            }
+        });
+
+        /*const tablist = (event,tabname) => {
+            console.log("Event:", event);
+            console.log("Tabname:", tabname);
+            let linke=document.getElementsByClassName("tab-list")
+            let contente=document.getElementsByClassName("timeline")
+            for(let link of linke){
+                link.classList.remove("active-link");
+            }
+            for(let content of contente){
+                content.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            let linke = document.getElementsByClassName("tab-list");
+            for (let i = 0; i < linke.length; i++) {
+                linke[i].addEventListener("click", function (event) {
+                    tablist(event, this.getAttribute("data-tab"));
+                });
+            }
+        });*/
+    </script>
+    {% endblock body %}

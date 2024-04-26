@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% load static %}
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+    {%endblock %}
+{% block title %} 
+Contact
+{% endblock title %}
+{% block body %} 
+<div class="container mt-3" data-bs-theme="dark">
+  <h1 class="text-center"> Contact Form</h1>
+  <form method="post" action="/contact">
+    {% csrf_token %}  
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="name">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Id</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="email@xyz.com">
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">What you want to contact for</label>
+      <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn bg-primary-subtle">Submit</button>
+  </form>
+</div>
+<div class="con"> 
+    <h6 class="sub-title">Contact Me</h6>
+    <p><i class="fa-solid fa-envelope"></i>nehalgupta0401@gmail.com</p>
+    <p><i class="fa-solid fa-phone"></i>8560033627</p>
+    <div class="social-media">
+        <a href="https://linkedin.com/in/nehal-gupta-1122751a7"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/skycomet04"><i class="fa-brands fa-github"></i></a>
+        <a href="https://trailblazer.me/id/ngupta534"><i class="fa-solid fa-cloud"></i></a>
+    </div>
+</div>
+
+{% endblock body %}

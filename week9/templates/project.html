@@ -1,0 +1,71 @@
+{% extends "main.html" %}
+{% load static %}
+        {% block css %}
+            <link rel="stylesheet" type="text/css" href="{% static '/styles.css' %}">
+        {%endblock %}
+        {% block title %} 
+            Projects
+        {% endblock title %}    
+{% block body %}
+<id="portfolio">
+<div class="container">
+    <h1 class="sub-title">My Work</h1>
+    <div class="work-list">
+        <div class="work">
+            <img src="static/calci.png">
+            <div class="layer">
+                <h3>Calculator</h3>
+                <p>A Advance calculator to perform arithmetic operations </p>
+                <a href="https://github.com/skycomet04/Calculator" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+        <div class="work">
+            <img src="static/ticgame.jpeg">
+            <div class="layer">
+                <h3>Tic Tac Toe Game</h3>
+                <p>Zero cross game to be played in your fun time  </p>
+                <a href="https://github.com/skycomet04/Tic-Tac-Toe" target="_blank"><i class="fa-solid fa-link"></i></a>
+            </div>
+        </div>
+        <div class="work">
+            <img src="static/quote.png">
+            <div class="layer">
+                <h3>Random Quotes</h3>
+                <p>project in which yoy would get randome quotes everytime you click the button using tkinter,request module </p>
+                <a href="https://github.com/skycomet04/random_quotes" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+        
+    </div>
+
+<h1 class="sub-title">Django Projects</h1>
+    <div class="work-list">
+        <div class="work">
+            <img src="static/to_do.png">
+            <div class="layer">
+                <h3>ToDo</h3>
+                <p>created a to-do website where user can register themselves create their own work to be done list and do crud operation on them.</p>
+                <a href="https://github.com/skycomet04/Todo-" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+        <div class="work">
+            <img src="static/blog.png">
+            <div class="layer">
+                <h3>Blog Webiste </h3>
+                <p>A website where you can create blog, view blogs, update and delete your blogs. Created it by using python ,django, html, css, bootstrap. </p>
+                <a href="https://github.com/skycomet04/Tic-Tac-Toe" target="_blank"><i class="fa-solid fa-link"></i></a>
+            </div>
+        </div>
+        <div class="work">
+            <img src="static/hospital.png">
+            <div class="layer">
+                <h3>Hospital Management System</h3>
+                <p>Created a hospital management system through which admin or staff can register doctor,patient,appointment, generate invoice and do other crud operations/p>
+                <a href="#" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+</div>
+</div>
+
+
+{% endblock body %}
