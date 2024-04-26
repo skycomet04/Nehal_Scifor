@@ -1,0 +1,49 @@
+{% extends "main.html" %}
+{% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/blog.css' %}">
+    {%endblock %}
+{% block body %} 
+<article class="blog-post" id="blog_detail">
+    <h3 class="display-5 link-body-emphasis mb-1">{{instance.title}}</h3>
+    <p class="date"><span>{{instance.date }}</span> <span>Author: {{instance.created_by}}</span>
+    </p>
+    <div class="blog">
+        <div class="image">
+        {% if instance.image %}
+            <img src="{{instance.image.url }}" class="bd-placeholder-img img-responsive">
+        {% endif %}
+        </div>
+        <div class="content">
+        <p>{{instance.content }}</p> 
+        </div>
+    </div>
+</article>
+    <div class="comment">
+        <form method="post" action="{% url 'createcomment' bid=instance.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="auhtor" class="form-label">username</label> <input type="text" class="formcont" id="author" name="author" style="margin-left:7%;">
+              </div>
+            <div class="mb-3">
+                <label for="comment_desc" class="form-label">Write your Comment</label>
+                <textarea class="form-contro" id="comment_desc" name="comment_desc" rows="2"></textarea>
+            </div>
+              <button type="submit" class="btn bg-primary-subtle">Post Comment</button>
+        </form>
+    </div>
+    <div class='commentlist'>
+        {% if comments %}
+            {% for com in comments %}
+               <strong>
+                {{com.author}} -
+                {{com.date_created}}<br>
+               </strong>
+               {{com.comment_desc}}
+               <hr width='1050px'>
+               <br>
+            {% endfor %}
+        {% endif %}
+     </div>
+
+{% endblock body %}

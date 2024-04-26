@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+{% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/blog.css' %}">
+    {%endblock %}
+{% block body %} 
+{% if user.is_authenticated %}
+<div class="container mt-3" data-bs-theme="light" id="top">
+  {% if is_update %}
+    <h1 class="text-center"> Update Your Blog</h1>
+  {% else %}
+    <h1 class="text-center"> Create Your Blog</h1>
+  {% endif %}
+  {% if is_update %}
+  <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}  
+    {{ form.as_p }}
+    <button type="submit" class="btn bg-primary-subtle">Save</button>
+</form>
+  {% else %}
+  <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" >
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Media File</label>
+      <input type="file" class="form-control" id="image" name="image">
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" id="content" name="content" rows="6"></textarea>
+      </div>
+      <button type="submit" class="btn bg-primary-subtle">Save</button>
+    </form>
+    {%endif%}
+  </div>
+{%else%}
+You're not logged in.Please Login to create or edit post
+{% endif %}
+  {% endblock body %}
+  

@@ -1,0 +1,12 @@
+{%extends 'main.html' %}
+{% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/blog.css' %}">
+    {%endblock %}
+{%block body%}
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm</button>
+    <a href="{% url 'blogs' %}">Cancel</a>
+</form>
+{%endblock body%}

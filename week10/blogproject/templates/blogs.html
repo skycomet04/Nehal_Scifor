@@ -1,0 +1,61 @@
+{%extends 'main.html' %}
+{% load static %}
+    {% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static '/blog.css' %}">
+    {%endblock %}
+{%block body%}
+<div class="container" id="top">
+<div class="row g-5">
+    <div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info">
+                <strong>{{message}}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+    <div class="col-md-8">
+    <center><h4 class="fst-italic">Blogs</h4></center>
+    {% for obj in querylist%}
+    <ul class="list-unstyled">
+        <li>
+        <div class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top">
+            {% if obj.image %}
+                <img src="{{obj.image.url }}" class="bd-placeholder-img img-responsive">
+            {% endif %}
+            <div class="col-lg-8">
+            <a href='{% url "blogs_detail" id=obj.id %}'><h6 class="mb-0">{{ obj.title }}</h6></a>
+            <p>{{ obj.updated }}</p><br>
+            <p>{{ obj.content }}</p><br>
+            <p>{{ obj.date }}</p><br>
+            <p>Author: {{obj.created_by}}</p><br>
+            <p><a href="{% url 'updateblog' obj.id %}">Update</a></p>
+            <form action="/deleteblog/{{obj.id}}" method="POST" style=" padding-right: 4%; padding-bottom: 3%;">
+                {% csrf_token %}
+                <button value="remove" type="submit" class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span>  remove</button>
+                </form>
+            </div>
+        </div>
+</li>
+</ul>
+{% endfor %}
+    </div>
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if obj.has_previous %}
+        <a href="?{{ page_request_var}}={{obj.previous_page_number }}">previous</a>
+        {% endif %}
+        
+        <span class="current">
+            Page {{ obj.number }} of {{ obj.paginator.num_pages }}.
+        </span>
+
+        {% if obj.has_next %}
+        <a href="?{{ page_request_var }}={{ obj.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+{%endblock body%}
