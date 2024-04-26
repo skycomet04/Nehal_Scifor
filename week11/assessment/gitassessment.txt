@@ -1,0 +1,39 @@
+1)  Git is a distributed version control system which tracks the change made in the files .It keeps the track and history of all the changes made and is used when developers need to work in group and need to collaborate with other developers so all can work on the same project.
+
+2)Go to the official site of git from there click on download 64 bit git for windows and then it will start downloading
+
+3)Repository is the .git folder present inside the project which is used to track all the changes made to the files in the project.
+
+4)To initialize the git repository use command git init in the terminal 
+
+5)Git staging area is the area where all the tracked files are which are ready to commit while the working directory is the directory in which all the files are whether tracked or untracked when we make changes in the file or create new file we are in working directory but when we add those files then they are in staging area.
+
+6)To add files to staging area use command git add filename or if you want to add all the files then can use git add . which will add all the files to staging area .
+
+7) To commit changes we use command git commit -m "message you want to type" which will commit all the tracked files to the local repository.
+
+8)Git status command shows the tacked vs untracked files and if the files are modified or deleted then it shows that to .
+
+9)To create a new branch use command git branch branchname this command will create new branch
+
+10) To switch between the branch we use checkout and then the branchname which we want to work on i.e git checkout branchname
+
+11) when you have more than one branches you are working on and at last you want to unified all the branches into one all the work you have done into one then we use merge command to unified all the branch into one 
+
+12) Merge conflict can be of two type one where more than one developer made changes to the same line of the code or when one developer is editing the file and the other is trying to delete the same file. to resolve confilct  Go to the project directory then use command git status there it will show all the affected files due to merge conflict
+if its the first case where developers are making change to the same line code then go to that file decide which developer modification need to be kept and then do that modification and then commit.For the second case decide whether to keep or delete the same file and then according to that do the work.
+
+13) Git log command shows all the commit that has been made in the project .It shows the developer name date , what was change .Its like a history which keeps the record of all the commits done by any developer. 
+
+14)To push changes from local to remote repository use command git push remoterepository url which will push the changes.
+
+15)Pull command is used to make the developer updated about the changes made in the remote repository .It makes the local repository upto date as the remote repository.
+
+16) To clone a repository use command git clone remote url directory name .The remote url is the url of the remote repository which is to be cloned and the directory name is the directory where you want to have the copy of the remote repository.
+
+18) There are two types of tags 1) Lightweight tag 2) Annotated tag
+ To create lightweight tag use command git  tag tagname and for annotated tag use command git tag -a version -m""write your message"
+
+19)The git checkout command helps us to change from one branch to another branch it checks us out from the current branch and move to the given branch name and make that branch our working directory.
+
+20) revert changes means one want to undo the last commit or to add some new commit to reverse the last commit changes without affecting the log history or removing that commit from the log . the command is git revert commit no 
