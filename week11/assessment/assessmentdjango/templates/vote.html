@@ -1,0 +1,34 @@
+{% extends "poll.html" %}
+{% block css %}
+    <style>
+        .row{
+            margin-top:4%;
+            margin-left:15%;
+        }
+        .btn{
+            margin-top:3%;
+        }
+    </style>
+{% endblock css %}
+{% block body%}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel pane-default">
+                <div class="heading">
+                    <h3> Cast Your Vote</h3>
+                </div>
+            {{polls.question}}<br><br>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <label>
+                <input type="radio" name="pollopt" value="option_one" >{{polls.option_one}}
+                </label><br><br>
+                <label>
+                <input type="radio" name="pollopt" value="option_two" >{{polls.option_two}}
+                </label>
+                <br>
+                <button type="submit" class="btn btn-primary">Vote</button>
+            </form>
+        </div>
+    </div>
+{% endblock body%}

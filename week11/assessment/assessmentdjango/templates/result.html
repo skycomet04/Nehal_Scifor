@@ -1,0 +1,30 @@
+{% extends "poll.html" %}
+{% block css %}
+    <style>
+        .row{
+            margin-top:4%;
+            margin-left:15%;
+        }
+        h2{
+            margin-top:2%;
+            font-size:20px;
+            font-weight:700;
+        }
+    </style>
+{% endblock css %}
+{% block body%}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel pane-default">
+                <div class="heading">
+                    <h3> Poll Result</h3>
+                </div>
+                <p>{{poll.question}}</p>
+                <ul class="list-group">
+                    <li class="list-group-item">{{poll.option_one}} -&nbsp; {{poll.one_vote}}</li>
+                    <li class="list-group-item">{{poll.option_two}}-&nbsp; {{poll.two_vote}}</li>
+                </ul>
+                <h2> Total vote- {{total_vote}}
+        </div>
+    </div>
+{% endblock body%}
