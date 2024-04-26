@@ -10,29 +10,6 @@ from rest_framework.views import APIView
 from .serializers import viewDataSerializer
 from rest_framework import generics
 import requests
-def youtube(request):
-    if request.method == 'POST': 
-        url = request.POST['link'] 
-        video = YouTube(url)  
-        stream = video.streams.get_highest_resolution()
-        stream.download() 
-        return render(request, 'youtube.html') 
-    return render(request, 'youtube.html')
-
-def emailsender(request):
-    if request.method=="POST":
-        username = request.POST.get('name')
-        email = request.POST.get('emailid')
-        que=request.POST.get('ques')
-        subject = 'Welcome to MyDjango'
-        message = f'Hi {username}!!, Thank you for contacting us'
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = [email, ]
-        send_mail( subject, message, email_from, recipient_list )
-        email_sender=Emailsender(name=username,email=email,ques=que,date=datetime.today())
-        email_sender.save()
-    return render(request,"emailsender.html")
-
 class SaveData(APIView):
     def post(self,request):
         symbol = request.data.get('symbol')
