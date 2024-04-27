@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% block body %}
+{% if user.is_authenticated and user.is_staff %}
+    <h2>Add Appointment</h2>
+    <div class="col-md-1"> 
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb">
+            <label >Doctor Name</label>
+            <select name="doctor" class="form-control">
+                {% for d in doc_list %}
+                    <option value="{{d.id}}">{{d.name}} [{{d.id}}]</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb">
+            <label >Patient Name</label>
+            <select name="patient" class="form-control">
+                {% for p in pat_list %}
+                    <option value="{{p.id}}">{{p.name}} [{{p.id}}]</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb">
+            <label for="ap_date" >Appointment Date</label>
+            <input type="date" class="form-control" id="ap_date" name="ap_date" >
+        </div>
+        <div class="mb">
+            <label for="ap_time" >Appointment Time</label>
+            <input type="time" class="form-control" id="ap_time" name="ap_time" >
+        </div>
+        <center>
+            <button type="submit" class="btn bg-primary-subtle">Add Appointment</button>
+        </center>
+    </form>
+</div>
+{% endif %}
+<p>{{form.errors}}</p>
+{% endblock body %}
