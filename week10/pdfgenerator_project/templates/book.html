@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Generate PDF</title>
+    <style>
+        body{
+            background-image:linear-gradient(rgb(152, 226, 245),rgb(173, 173, 241));
+        }
+        h1,h3{
+            text-align: center;}
+        .margin{
+            margin-left:5%;
+        }
+        .form-in{
+            margin-top:4%;
+        }
+        .inp{
+            width:50%;
+            height:40px;
+        }
+        p,button{
+            margin-top:3%;
+        }
+        p a{
+            font-size:18px;
+        }
+        </style>
+</head>
+<body>
+    <h1>Generate and Download PDF</h1>
+    <h3>Add a New Book</h3>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="margin">
+        <div class="mb-3 form-in">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control inp" id="title" name="title">
+        </div>
+        <div class="mb-3 form-in">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control inp" id="author" name="author">
+        </div>
+        <div class="mb-3 form-in">
+            <label for="publication_year" class="form-label">Publication Year</label>
+            <input type="text" class="form-control inp" id="publication_year" name="publication_year">
+        </div>
+        <button type="submit">Add Book</button>
+    </form>
+    <p><a href="{% url 'generate_pdf' %}" download>Download Book Catalog (PDF)</a></p>
+</div>
+<br>
+ 
+</body>
