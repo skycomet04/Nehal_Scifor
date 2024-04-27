@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% block body %} 
+{% if user.is_authenticated and user.is_staff %}
+<div class="container">
+    <h2>Patient List</h2>
+    <br><br>
+    <table class="table-striped table-bordered table-sm" id="dtBasicExample">
+        <thead>
+            
+            <tr>
+                <th class="th-sm">Patient Id</th>
+                <th class="th-sm">Patient Name</th>
+                <th class="th-sm">Age</th>
+                <th class="th-sm">Mobile</th>
+                <th class="th-sm">status</th>
+                <th class="th-sm">Delete</th>
+                <th class="th-sm">Update</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            {% for p in pat_list %}
+            <tr>
+                <td>{{p.id}}</td> 
+                <td><a href="{% url 'patient_detail' p.id%}">{{p.name}}</a></td>
+                <td>{{p.age}}</td>
+                <td>{{p.mobile}}</td>
+                <td>{{p.status}}</td>
+                <td><a href="{% url 'deletepatient' p.id %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger"> Delete</a></td>
+                <td><a href="{% url 'updatepatient' p.id %}"> Update</a></td>
+            
+            </tr>  
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable({
+          "pagingType": "simple" // "simple" option for 'Previous' and 'Next' buttons only
+        });
+        $('.dataTables_length').addClass('bs-select');
+    })
+</script>
+{% endif %}
+{% endblock body %}

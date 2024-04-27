@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block body %}
+{% if user.is_authenticated and user.is_staff %}
+        <h2>Add Patient</h2>
+        <form method="POST" action="">
+        {% csrf_token %}
+        <div class="colmd">
+            <div class="inp1">
+                <label for="name" class="form-label">Patient Name</label>
+                <input type="name" class="form-control" id="name" name="name" >
+            </div>
+            <div class="inp2">
+                <label for="age"> Patient Age</label>
+                <input type="number" class="form-control" id="age" name="age">
+            </div>
+        </div>
+        <div class="colmd">
+            <div class="inp1">
+                <label for="gender" class="form-label">Gender</label>
+                <input type="text" class="form-control" id="gender" name="gender" >
+            </div>
+            <div class="inp2">
+                <label for="mobile"> Mobile No</label>
+                <input type="number" class="form-control" id="mobile" name="mobile">
+            </div>
+        </div>
+        <div class="colmd">
+            <div class="inp1">
+                <label for="email"> Email Id</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div> 
+            <div class="inp2">
+                <label for="address"> Address</label>
+                <textarea id="address" class="form-control" name="address" rows='3'></textarea>
+            </div>
+        </div> 
+            <div class="inp1">
+                <label for="status"> Status</label>
+                <input type="text" class="form-control" id="status" name="status">
+            </div> 
+        </div>
+            <center>
+                <button type="submit" class="btn bg-primary-subtle">Add Patient</button>
+            </center>
+        </form>
+{% endif %}
+{% endblock body %}

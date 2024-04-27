@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block body %}
+{% if user.is_authenticated and user.is_staff %}
+    <div class="col-md-3" >
+    <div class="submit_form">
+        <h2>Add Doctor</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Doctor Name</label>
+            <input type="name" class="form-control" id="name" name="name" >
+        </div>
+        <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" class="form-control" id="department" name="department" >
+        </div>
+        <div class="mb-3">
+            <label for="mobile"> Mobile No</label><br>
+            <input type="number" class="form-control" id="mobile" name="mobile">
+        </div>
+        <div class="mb-3">
+            <label for="status"> Status</label><br>
+            <input type="text" class="form-control" id="status" name="status">
+        </div> 
+        <div class="mb-3">
+            <label for="resident"> Residential Address</label><br>
+            <input type="text" class="form-control" id="resident" name="resident">
+        </div> 
+        <div class="mb-3">
+            <label for="fees"> Checkup Fee</label><br>
+            <input type="text" class="form-control" id="fees" name="fees">
+        </div> 
+        <center>
+            <button type="submit" class="btn bg-primary-subtle">Add Doctor</button>
+        </center>
+    </form>
+    </div>
+    </div>
+{% endif %}
+{% endblock body %}

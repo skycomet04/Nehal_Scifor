@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% block body %} 
+<div class="container">
+    {% if  type == 'doctor' %}
+        <span><h5 class="heading">Doctor Id:&nbsp;</h5>{{doctor.id}}</span>
+        <span><h5 class="heading">Doctor Name:&nbsp;</h5>{{doctor.name}}</span><span class="span-right"><h5 class="heading">Department:&nbsp;</h5>{{doctor.department}}</span>
+        <span><h5 class="heading">Contact:&nbsp;</h5>{{doctor.mobile}}</span><span class="span-right"><h5 class="heading">Status:&nbsp;</h5>{{doctor.status}}</span>
+        <span><h5 class="heading">Checkup Fee:&nbsp;</h5>{{doctor.fees}}</span>
+        <span><h5 class="heading">Residential Address:&nbsp;</h5>{{doctor.resident}}</span>
+    {% elif type == 'patient'  %}
+        <span><h5 class="heading">Patient Id:&nbsp;</h5>{{patient.id}}</span><span class="span-right"><h5 class="heading">Age:&nbsp;</h5>{{patient.age}}</span>
+        <span><h5 class="heading">Patient Name:&nbsp;</h5>{{patient.name}}</span><span class="span-right"><h5 class="heading">Gender:&nbsp;</h5>{{patient.gender}}</span>
+        <span><h5 class="heading">Email ID :&nbsp;</h5>{{patient.email}}</span><span class="span-right"><h5 class="heading">Mobile No.:&nbsp;</h5>{{patient.mobile}}</span>
+        <span><h5 class="heading">Address:&nbsp;</h5>{{patient.address}}</span>
+        <span><h5 class="heading">Status:&nbsp;</h5>{{patient.status}}</span>
+    {% elif type == 'appoint' %}
+    <div class="ap">
+        <span class="span-left"><h5 class="heading">Appointment Id:&nbsp;</h5>{{appointment.id}}</span>
+    </div>
+    <div>
+        <span class="span-left"><h5 class="heading">Patient Name:&nbsp;</h5>{{appointment.doctor}}</span><span class="span-right"><h5 class="heading">Gender:&nbsp;</h5>{{appointment.patient}}</span>
+    </div>
+    <div>
+        <span class="span-left"><h5 class="heading">Patient Mobile No.:&nbsp;</h5>{{appointment.patient.mobile}}</span><span class="span-right"><h5 class="heading">Patient Status:&nbsp;</h5>{{appointment.patient.status}}</span>
+    </div>
+    <div>
+        <span class="span-left"><h5 class="heading">patient Address:&nbsp;</h5>{{appointment.patient.address}}</span>
+    </div>
+    {% endif %}
+</div>
+{% endblock body %}

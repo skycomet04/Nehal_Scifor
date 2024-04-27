@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block body %}
+<hr>
+    <div class="class mt-5">
+        <table class="table mt-6">
+            <thead>
+                <tr>
+                    <th>Id </th>
+                    <th>Visiting Doctor </th>
+                    <th>Patient Name </th>
+                    <th>Fee</th>
+                    <th>Service</th>
+                    <th>Quantity </th>
+                    <th>Mobile No</th>
+                    <th>Total Amount </th>
+                    <th>Delete </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.treating_doctor}}</td>
+                    <td>{{item.patient_name}}</td>
+                    <td>₹{{item.amount}}</td>
+                    <td>{{item.services}}</td>
+                    <td>{{item.qty}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td> ₹{{item.total_amount}}</td>
+                    <td>
+                        <a href="{% url 'deletereceipt' item.id %}" class="btn btn-danger m-2">Delete </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th colspan="5" class="text-right">Grand Sum :</th>
+                    <td colspan="4">{{ grand_total }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="{% url 'generatereceipt' app_id %}" class="btn btn-secondary m-2">Download Invoice </a>
+    </div>
+{% endblock body %}
