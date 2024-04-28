@@ -92,7 +92,7 @@ def bookingslot(request,sid=0):
                 recipient_list = [userid.email, ]
                 send_mail( subject, message, email_from, recipient_list )
                 messages.success(request, f"An email has been sent of booking confirmation on your registered email id")
-            messages.success(request, f"Your booking slot is confirmed .Your parking slot_no is {instance.slot_no.no}.Thanks for using our parking service.")
+            messages.success(request, f"Your booking slot is confirmed .Your parking slot_no is {instance.slot_no.no}and your booking id is {instance.id}.Thanks for using our parking service.")
             return redirect('dashboard')
         else:
             print(form.errors)
