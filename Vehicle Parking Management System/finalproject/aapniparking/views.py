@@ -226,9 +226,8 @@ def home(request):
                 p_m=c_date.month-1
                 p_d=30+(c_date.day-7) 
             else:
-                p_d=c_date.day
                 p_m=c_date.month
-            p_d=c_date.day-7
+                p_d=c_date.day-7
             p_date1=date(p_y,p_m,p_d)
             p_date1=str(p_date1)
             app=ParkingBookSlot.objects.filter(parking_date__range=[p_date1, pdate])
